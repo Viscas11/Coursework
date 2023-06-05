@@ -26,6 +26,10 @@ public class Main {
 
      printEmployees(employees);
      salaryAmount(employees);
+     minSalary(employees);
+     maxSalary(employees);
+     calculateTheAverageSalary(employees);
+     getTheFullNameOfEachEmployees(employees);
     }
     public static void printEmployees(Employee[] employees) {
         for (Employee employee : employees){
@@ -33,6 +37,8 @@ public class Main {
                 System.out.println(employee.toString());
         }
     }
+
+    // Посчитать сумму затрат на зарплаты в месяц.
     public static void salaryAmount(Employee[] employees) {
         int salaryAmount = 0;
         for (Employee employee : employees){
@@ -42,5 +48,49 @@ public class Main {
         }
         System.out.println(salaryAmount);
     }
-    public static void
+
+    //Найти сотрудника с минимальной зарплатой.
+    public static void minSalary(Employee[] employees) {
+        Employee result = employees[0];
+         if (employees[0] != null) {
+             int minSalary = employees[0].getSalary();
+             for (Employee employee : employees) {
+                 if (employee.getSalary() < minSalary) {
+                     minSalary = employee.getSalary();
+                     result = employee;
+                 }
+             }
+         }
+        System.out.println(" Сотрудник с минимальной зарлатой " + result);
+    }
+
+    //Найти сотрудника с максимальной зарплатой.
+    public static void maxSalary(Employee[] employees) {
+        Employee result = employees[0];
+        int maxSalary = employees[0].getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() > maxSalary) {
+                maxSalary = employee.getSalary();
+                result = employee;
+            }
+        }
+        System.out.println(" Сотрудник с максимальной зарлатой " + result);
+    }
+
+    //Подсчитать среднее значение зарплат.
+    public static void calculateTheAverageSalary(Employee[] employees) {
+        int summa = 0;
+        for (Employee employee : employees) {
+            summa += employee.getSalary();
+        }
+        int avergeSalary = summa / 10;
+        System.out.println("Среднее значение зарплаты " +
+                avergeSalary + " руб. ");
+    }
+    public static void getTheFullNameOfEachEmployees(Employee[] employees) {
+
+        for (Employee employee : employees) {
+            System.out.println(employee.getFio());
+        }
+    }
 }
